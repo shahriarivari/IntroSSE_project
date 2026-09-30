@@ -27,6 +27,8 @@ setup(
             'readIR = group4_ws.readIR:main',
             'readOdom = group4_ws.readOdom:main',
             'readLidar = group4_ws.readLidar:main',
+	        'driveLidar = group4_ws.driveLidar:main',
+            'setButton = group4_ws.setButton:main'
         ],
     },
 )
