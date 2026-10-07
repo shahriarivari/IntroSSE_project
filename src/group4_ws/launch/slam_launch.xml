@@ -1,0 +1,11 @@
+<launch>
+  <arg name="namespace" default="/robot_4"/>
+
+  <!-- iRobot's SLAM launch: namespaced, remapped, params loaded, node stays unconfigured -->
+  <include file="$(find-pkg-share create3_lidar_slam)/launch/slam_toolbox_launch.py">
+    <arg name="namespace" value="$(var namespace)"/>
+  </include>
+
+  <!-- our node: button 1 -> configure -> activate -->
+  <node pkg="group4_ws" exec="slam_button" name="slam_button" output="screen"/>
+</launch>

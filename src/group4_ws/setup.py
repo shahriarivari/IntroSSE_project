@@ -1,4 +1,6 @@
 from setuptools import find_packages, setup
+import os
+from glob import glob
 
 package_name = 'group4_ws'
 
@@ -10,6 +12,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.xml')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -28,7 +31,8 @@ setup(
             'readOdom = group4_ws.readOdom:main',
             'readLidar = group4_ws.readLidar:main',
 	        'driveLidar = group4_ws.driveLidar:main',
-            'setButton = group4_ws.setButton:main'
+            'setButton = group4_ws.setButton:main',
+            'slam_button = group4_ws.slam_button:main',
         ],
     },
 )

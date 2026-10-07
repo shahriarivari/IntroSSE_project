@@ -35,7 +35,7 @@ FRONT_HALF   = math.radians(25)         # "in front" = +-25 deg
 CANDIDATES   = np.radians(np.arange(-180, 180, 5))   # directions to test, every 5 deg
 HYSTERESIS   = 0.3                      # prefer keeping the previous direction (less wobble)
 
-FORWARD_SPEED = 0.5      # m/s
+FORWARD_SPEED = 0.1      # m/s
 TURN_SPEED    = 1.0       # rad/s  (positive = left, negative = right)
 HEADING_GAIN  = 2.0       # how hard to steer toward the chosen direction
 DRIVE_ANGLE   = 0.3       # only drive forward when the direction is within this [rad]
