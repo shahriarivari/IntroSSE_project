@@ -1,12 +1,12 @@
 <launch>
   <!-- SLAM at the root namespace: /map, /map_metadata, /pose -->
   <node pkg="slam_toolbox" exec="async_slam_toolbox_node" name="slam_toolbox" output="screen">
-    <param from="$(find-pkg-share group4_ws)/config/slam_toolbox.yaml"/>
+    <param from="$(find-pkg-share group4_slam)/config/slam_toolbox.yaml"/>
     <param name="use_sim_time" value="false"/>
     <remap from="/tf" to="/robot_4/tf"/>
     <remap from="/tf_static" to="/robot_4/tf_static"/>
   </node>
 
   <!-- button 1 -> configure -> activate -->
-  <node pkg="group4_ws" exec="slam_button" name="slam_button" output="screen"/>
+  <node pkg="group4_slam" exec="slam_button" name="slam_button" output="screen"/>
 </launch>
