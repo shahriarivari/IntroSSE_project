@@ -18,7 +18,7 @@ from bug2_create3 import bug2, geometry, go_to_goal, lidar, wall_follow
 # DEFAULTS; set them per run without editing this file:
 #   ros2 run bug2_create3 <executable> --ros-args -p goal_forward:=4.0 -p goal_left:=-0.5
 GOAL_FORWARD = 3.0                          # [m] ahead of the robot at start
-GOAL_LEFT = 0.0                             # [m] to the left of the robot at start (+ = left)
+GOAL_LEFT = -0.5                             # [m] to the left of the robot at start (+ = left)
 
 FRONT_HALF_WIDTH = math.radians(40)         # [rad] front sector during go-to-goal
 WF_FRONT_HALF_WIDTH = math.radians(20)      # [rad] front sector during wall-follow
