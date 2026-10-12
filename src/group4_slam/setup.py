@@ -29,7 +29,6 @@ setup(
     entry_points={
         'console_scripts': [
             'slam_button = group4_slam.slam_button:main',
-            'goal_publisher = group4_slam.goal_publisher:main',
         ],
     },
 )
