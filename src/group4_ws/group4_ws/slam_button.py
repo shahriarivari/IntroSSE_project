@@ -7,7 +7,7 @@ from lifecycle_msgs.srv import GetState, ChangeState
 from lifecycle_msgs.msg import State, Transition
 
 NS = '/robot_4'
-SLAM_NODE = f'{NS}/slam_toolbox'     # full name of the SLAM lifecycle node
+SLAM_NODE = f'/slam_toolbox'     # full name of the SLAM lifecycle node
 
 
 class SlamButton(Node):

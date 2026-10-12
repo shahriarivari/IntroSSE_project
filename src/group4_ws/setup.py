@@ -13,6 +13,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         (os.path.join('share', package_name, 'launch'), glob('launch/*.xml')),
+        (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -33,6 +34,7 @@ setup(
 	        'driveLidar = group4_ws.driveLidar:main',
             'setButton = group4_ws.setButton:main',
             'slam_button = group4_ws.slam_button:main',
+            'goal_publisher = group4_ws.goal_publisher:main',
         ],
     },
 )
