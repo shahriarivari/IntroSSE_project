@@ -1,23 +1,9 @@
 <launch>
-  <!-- goal in the map frame (always with a decimal point); override at launch:
-       ros2 launch group4_ws slam_launch.xml goal_x:=2.0 goal_y:=1.0 -->
-  <arg name="goal_x" default="2.0"/>
-  <arg name="goal_y" default="1.0"/>
-
   <!-- SLAM at the root namespace: /map, /map_metadata, /pose -->
   <node pkg="slam_toolbox" exec="async_slam_toolbox_node" name="slam_toolbox" output="screen">
-    <!-- our own params (scan_topic: /robot_4/scan is set inside) -->
     <param from="$(find-pkg-share group4_ws)/config/slam_toolbox.yaml"/>
     <param name="use_sim_time" value="false"/>
-    <!-- TF must stay on the Create 3's bus -->
     <remap from="/tf" to="/robot_4/tf"/>
-    <remap from="/tf_static" to="/robot_4/tf_static"/>
-  </node>
-
-  <!-- goal frame: map -> goal on the robot's TF bus, changeable at runtime -->
-  <node pkg="group4_ws" exec="goal_publisher" name="goal_publisher" output="screen">
-    <param name="goal_x" value="$(var goal_x)"/>
-    <param name="goal_y" value="$(var goal_y)"/>
     <remap from="/tf_static" to="/robot_4/tf_static"/>
   </node>
 
