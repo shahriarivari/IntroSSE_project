@@ -1,0 +1,207 @@
+{
+  "configById": {
+    "3D!group4": {
+      "cameraState": {
+        "perspective": false,
+        "distance": 7,
+        "phi": 0,
+        "thetaOffset": 90,
+        "targetOffset": [
+          2.2,
+          1.4,
+          0
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fovy": 45,
+        "near": 0.01,
+        "far": 5000
+      },
+      "followMode": "follow-none",
+      "followTf": "map",
+      "scene": {
+        "transforms": {
+          "labelSize": 0.08,
+          "axisScale": 0.25
+        }
+      },
+      "transforms": {},
+      "topics": {
+        "/robot_4/map": {
+          "visible": true,
+          "colorMode": "map"
+        },
+        "/robot_4/scan": {
+          "visible": true,
+          "pointSize": 4,
+          "colorMode": "flat",
+          "flatColor": "#ff3b30ff",
+          "decayTime": 0
+        },
+        "/robot_4/bug2/markers": {
+          "visible": true
+        },
+        "/robot_4/bug2/path": {
+          "visible": true,
+          "lineWidth": 0.03
+        },
+        "/robot_4/bug2/goal": {
+          "visible": true
+        },
+        "/robot_4/plan": {
+          "visible": true,
+          "lineWidth": 0.04
+        },
+        "/robot_4/local_costmap/published_footprint": {
+          "visible": true
+        },
+        "/robot_4/global_costmap/costmap": {
+          "visible": false,
+          "colorMode": "costmap",
+          "alpha": 0.5
+        },
+        "/robot_4/local_costmap/costmap": {
+          "visible": false,
+          "colorMode": "costmap",
+          "alpha": 0.5
+        },
+        "/robot_4/lookahead_point": {
+          "visible": true
+        },
+        "/robot_4/lookahead_collision_arc": {
+          "visible": true,
+          "lineWidth": 0.02
+        }
+      },
+      "layers": {
+        "grid": {
+          "visible": true,
+          "layerId": "foxglove.Grid",
+          "frameId": "map",
+          "size": 6,
+          "divisions": 12,
+          "lineWidth": 1,
+          "color": "#248eff40",
+          "position": [
+            2,
+            1.5,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "publish": {
+        "type": "pose",
+        "poseTopic": "/robot_4/goal_pose",
+        "pointTopic": "/robot_4/clicked_point",
+        "poseEstimateTopic": "/robot_4/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      }
+    },
+    "StateTransitions!bug2": {
+      "paths": [
+        {
+          "value": "/robot_4/bug2/state.data",
+          "timestampMethod": "receiveTime"
+        },
+        {
+          "value": "/robot_4/bug2/rule.data",
+          "timestampMethod": "receiveTime"
+        },
+        {
+          "value": "/robot_4/collision_monitor_state.action_type",
+          "timestampMethod": "receiveTime"
+        }
+      ],
+      "isSynced": true
+    },
+    "Plot!speed": {
+      "paths": [
+        {
+          "value": "/robot_4/cmd_vel.linear.x",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "label": "cmd v"
+        },
+        {
+          "value": "/robot_4/odom.twist.twist.linear.x",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "label": "odom v"
+        },
+        {
+          "value": "/robot_4/cmd_vel.angular.z",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "label": "cmd w"
+        },
+        {
+          "value": "/robot_4/odom.twist.twist.angular.z",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "label": "odom w"
+        }
+      ],
+      "showLegend": true,
+      "legendDisplay": "floating",
+      "showXAxisLabels": true,
+      "showYAxisLabels": true,
+      "isSynced": true,
+      "xAxisVal": "timestamp",
+      "followingViewWidth": 20
+    },
+    "Gauge!battery": {
+      "path": "/robot_4/battery_state.percentage",
+      "minValue": 0,
+      "maxValue": 1,
+      "colorMode": "colormap",
+      "colorMap": "red-yellow-green",
+      "reverse": false
+    },
+    "RosOut!log": {
+      "searchTerms": [],
+      "minLogLevel": 2
+    }
+  },
+  "globalVariables": {},
+  "userNodes": {},
+  "playbackConfig": {
+    "speed": 1
+  },
+  "layout": {
+    "direction": "row",
+    "splitPercentage": 62,
+    "first": "3D!group4",
+    "second": {
+      "direction": "column",
+      "splitPercentage": 22,
+      "first": "StateTransitions!bug2",
+      "second": {
+        "direction": "column",
+        "splitPercentage": 45,
+        "first": "Plot!speed",
+        "second": {
+          "direction": "row",
+          "splitPercentage": 28,
+          "first": "Gauge!battery",
+          "second": "RosOut!log"
+        }
+      }
+    }
+  }
+}

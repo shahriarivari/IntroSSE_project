@@ -1,0 +1,23 @@
+<launch>
+  <!-- SLAM in the robot namespace: /robot_4/map, /robot_4/map_metadata, /robot_4/pose,
+       services /robot_4/slam_toolbox/... ; map->odom is published on /robot_4/tf. -->
+  <arg name="namespace" default="robot_4"/>
+
+  <node pkg="slam_toolbox" exec="async_slam_toolbox_node" name="slam_toolbox"
+        namespace="$(var namespace)" output="screen">
+    <param from="$(find-pkg-share group4_slam)/config/slam_toolbox.yaml"/>
+    <param name="use_sim_time" value="false"/>
+    <!-- tf2 always uses the absolute /tf: send it to the robot's (relative -> /robot_4/tf) -->
+    <remap from="/tf" to="tf"/>
+    <remap from="/tf_static" to="tf_static"/>
+    <!-- slam_toolbox's map topic is absolute by default (map_name: /map), so the namespace
+         does not apply to it. Without this Nav2 waits forever for /robot_4/map
+         (run 2026-10-13: "Can't update static costmap layer, no map received"). -->
+    <remap from="/map" to="map"/>
+    <remap from="/map_metadata" to="map_metadata"/>
+  </node>
+
+  <!-- button 1 -> configure -> activate (slam_toolbox is a lifecycle node in Jazzy) -->
+  <node pkg="group4_slam" exec="slam_button" name="slam_button"
+        namespace="$(var namespace)" output="screen"/>
+</launch>
